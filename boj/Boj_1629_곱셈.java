@@ -27,6 +27,7 @@ public class Boj_1629_곱셈 {
         }
 
         long temp = pow(a, b / 2, c);
+
         long result = (temp * temp) % c;
 
         if(b % 2 == 1){
