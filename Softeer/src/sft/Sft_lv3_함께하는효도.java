@@ -3,13 +3,14 @@ import java.io.*;
 import java.util.*;
 
 public class Sft_lv3_함께하는효도 {
+	
     static int n, m;
-    static int[][] board;
+    static int[][] map;
     static Position[] friends;
     static boolean[][] visited;
-    static int maxSum = 0;
-    static int[] dx = {-1, 1, 0, 0}; // 상하좌우
-    static int[] dy = {0, 0, -1, 1};
+    static int max = 0;
+    static int[] dx = {-1, 0, -1, 0};
+    static int[] dy = {0, 1, 0, -1};
     
     static class Position {
         int x, y;
@@ -37,21 +38,20 @@ public class Sft_lv3_함께하는효도 {
         }
     }
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+    	
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        
         n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
-        
-        board = new int[n][n];
+        m = Integer.parseInt(st.nextToken());       
+        map = new int[n][n];
         friends = new Position[m];
         visited = new boolean[n][n];
         
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
-                board[i][j] = Integer.parseInt(st.nextToken());
+                map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
         
@@ -66,19 +66,19 @@ public class Sft_lv3_함께하는효도 {
         int initialSum = 0;
         for (Position friend : friends) {
             if (!harvested[friend.x][friend.y]) {
-                initialSum += board[friend.x][friend.y];
+                initialSum += map[friend.x][friend.y];
                 harvested[friend.x][friend.y] = true;
             }
         }
         
         dfs(0, new State(friends, harvested, initialSum));
         
-        System.out.println(maxSum);
+        System.out.println(max);
     }
     
     static void dfs(int time, State state) {
         if (time == 3) {
-            maxSum = Math.max(maxSum, state.sum);
+            max = Math.max(max, state.sum);
             return;
         }
         
@@ -93,7 +93,7 @@ public class Sft_lv3_함께하는효도 {
                 // 새로운 위치에서 수확
                 for (Position pos : next) {
                     if (!nextState.harvested[pos.x][pos.y]) {
-                        nextState.sum += board[pos.x][pos.y];
+                        nextState.sum += map[pos.x][pos.y];
                         nextState.harvested[pos.x][pos.y] = true;
                     }
                 }
