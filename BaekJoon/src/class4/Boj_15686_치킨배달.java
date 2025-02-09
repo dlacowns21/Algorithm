@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-class Point {
-    int x, y;
-    Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
+
 
 public class Boj_15686_치킨배달 {
-
+	
+	static class Point {
+	    int x, y;
+	    Point(int x, int y) {
+	        this.x = x;
+	        this.y = y;
+	    }
+	}
+	
     static int N, M, total, min, dist;
     static List<Point> house = new ArrayList<>();
     static List<Point> chicken = new ArrayList<>();

@@ -13,13 +13,13 @@ public class Boj_13549_숨바꼭질3 {
     static boolean[] visited;
 
     public static void main(String[] args) throws Exception {
-
+    	
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
-        visited = new boolean[10001];
-        min = 100000;
+        visited = new boolean[100001];
+        min = Integer.MAX_VALUE;
         bfs(N, 0);
         System.out.println(min);
 
@@ -36,7 +36,7 @@ public class Boj_13549_숨바꼭질3 {
                 min = Math.min(min, count);
                 continue;
             }
-            if(loc * 2 <= MAX && !visited[loc * 2]) {
+            if(loc * 2 < MAX && !visited[loc * 2]) {
                 visited[loc * 2] = true;
                 que.offer(new int[] {loc * 2, count});
             }
@@ -44,7 +44,7 @@ public class Boj_13549_숨바꼭질3 {
                 visited[loc - 1] = true;
                 que.offer(new int[] {loc  - 1, count + 1});
             }
-            if(loc + 1 <= MAX && !visited[loc + 1]) {
+            if(loc + 1 < MAX && !visited[loc + 1]) {
                 visited[loc + 1] = true;
                 que.offer(new int[] {loc + 1, count + 1});
             }
