@@ -1,4 +1,4 @@
-package src.sft;
+package sft;
 
 import java.io.*;
 import java.util.*;
