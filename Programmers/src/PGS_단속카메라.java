@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class PGS_단속카메라 {
 
     public int solution(int[][] routes) {
